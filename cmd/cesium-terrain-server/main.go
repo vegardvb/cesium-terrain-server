@@ -4,9 +4,9 @@ package main
 import (
 	"flag"
 	"fmt"
-	myhandlers "github.com/nmccready/cesium-terrain-server/handlers"
-	"github.com/nmccready/cesium-terrain-server/log"
-	"github.com/nmccready/cesium-terrain-server/stores/fs"
+	myhandlers "github.com/vegardvb/cesium-terrain-server/handlers"
+	"github.com/vegardvb/cesium-terrain-server/log"
+	"github.com/vegardvb/cesium-terrain-server/stores/fs"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	l "log"

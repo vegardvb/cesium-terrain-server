@@ -1,7 +1,7 @@
 # Cesium Terrain Server
 
 A basic server for serving up filesystem based tilesets representing
-[Cesium.js](http://cesiumjs.org/) terrain models.  The resources served up are
+[Cesium.js](http://cesiumjs.org/) terrain models. The resources served up are
 intended for use with the
 [`CesiumTerrainProvider`](http://cesiumjs.org/Cesium/Build/Documentation/CesiumTerrainProvider.html)
 JavaScript class present in the Cesium.js client.
@@ -12,8 +12,8 @@ terrain tilesets created using the
 tools.
 
 This project also provides a [Docker](https://www.docker.com/) container to
-further simplify deployment of the server and testing of tilesets.  See the
-[Docker Registry](https://registry.hub.docker.com/u/nmccready/cesium-terrain-server/)
+further simplify deployment of the server and testing of tilesets. See the
+[Docker Registry](https://registry.hub.docker.com/u/vegardvb/cesium-terrain-server/)
 for further details.
 
 ## Usage
@@ -65,30 +65,30 @@ This URL, for instance, is what you would use when configuring
 in the Cesium client.
 
 Serving up additional tilesets is simply a matter of adding the tileset as a
-subdirectory to `/data/tilesets/terrain/`.  For example, adding a tileset
+subdirectory to `/data/tilesets/terrain/`. For example, adding a tileset
 directory called `lidar` to that location will result in the tileset being
 available under <http://localhost:8080/tilesets/lidar/>.
 
 Note that the `-web-dir` option can be used to serve up static assets on the
-filesystem in addition to tilesets.  This makes it easy to use the server to
+filesystem in addition to tilesets. This makes it easy to use the server to
 prototype and develop web applications around the terrain data.
 
 ### `layer.json`
 
 The `CesiumTerrainProvider` Cesium.js class requires that a `layer.json`
-resource is present describing the terrain tileset.  The `ctb-tile` utility does
-not create this file.  If a `layer.json` file is present in the root directory
+resource is present describing the terrain tileset. The `ctb-tile` utility does
+not create this file. If a `layer.json` file is present in the root directory
 of the tileset then this file will be returned by the server when the client
-requests it.  If the file is not found then the server will return a default
+requests it. If the file is not found then the server will return a default
 resource.
 
 ### Root tiles
 
 The Cesium javascript client requires that the two top level tiles representing
-zoom level `0` are always present.  These tiles are represented by the
+zoom level `0` are always present. These tiles are represented by the
 `0/0/0.terrain` and `0/1/0.terrain` resources. When creating tilesets using the
-`ctb-tile` utility only one of these tiles will be generated *unless* the source
-terrain dataset intersects with the prime meridian.  The terrain server
+`ctb-tile` utility only one of these tiles will be generated _unless_ the source
+terrain dataset intersects with the prime meridian. The terrain server
 addresses this issue by serving up a blank terrain tile if a top level tile is
 requested which does not also exist on the filesystem.
 
@@ -96,12 +96,12 @@ requested which does not also exist on the filesystem.
 
 The terrain server can use a memcache server to cache tileset data. It is
 important to note that the terrain server does not use the cache itself, it only
-populates it for each request.  The idea is that a reverse proxy attached to the
+populates it for each request. The idea is that a reverse proxy attached to the
 memcache (such as Nginx) will first attempt to fulfil a request from the cache
 before falling back to the terrain server, which will then update the cache.
 
 Enabling this functionality requires specifying the network address of a
-memcached server (including the port) using the `-memcached` option.  E.g. A
+memcached server (including the port) using the `-memcached` option. E.g. A
 memcached server running at `memcache.me.org` on port `11211` can be used as
 follows:
 
@@ -110,7 +110,7 @@ cesium-terrain-server -dir /data/tilesets/terrain -memcached memcache.me.org:112
 ```
 
 If present, the terrain server uses the value of the custom `X-Memcache-Key`
-header as the memcache key, otherwise it uses the value of the request URI.  A
+header as the memcache key, otherwise it uses the value of the request URI. A
 minimal Nginx configuration setting `X-Memcache-Key` is as follows:
 
 ```
@@ -146,13 +146,13 @@ the memory limit at which resources are considered to large for the cache.
 ## Installation
 
 The server is written in [Go](http://golang.org/) and requires Go to be present
-on the system when compiling it from source.  As such, it should run everywhere
-that Go does.  Assuming that you have set the
+on the system when compiling it from source. As such, it should run everywhere
+that Go does. Assuming that you have set the
 [GOPATH](https://golang.org/cmd/go/#hdr-GOPATH_environment_variable),
 installation is a matter of running `go install`:
 
 ```sh
-go get github.com/nmccready/cesium-terrain-server/cmd/cesium-terrain-server
+go get github.com/vegardvb/cesium-terrain-server/cmd/cesium-terrain-server
 ```
 
 A program called `cesium-terrain-server` should then be available under your
@@ -190,7 +190,7 @@ project source directory is very handy for developing and testing. NOTE: for you
 ## Issues and Contributing
 
 Please report bugs or issues using the
-[GitHub issue tracker](https://github.com/nmccready/cesium-terrain-server).
+[GitHub issue tracker](https://github.com/vegardvb/cesium-terrain-server).
 
 Code and documentation contributions are very welcome, either as GitHub pull
 requests or patches.
