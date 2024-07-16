@@ -10,11 +10,11 @@ DOCKER_LOCAL_NAME:=$(DOCKER_REPO):local
 LATEST_TAG=$(shell git tag -l --sort=-v:refname | awk 'FNR == 1')
 LATEST_TAG_STABLE=$(shell git tag -l --sort=-v:refname | grep -v alpha | awk 'FNR == 1')
 
-install: $(GOFILES) assets/assets.go
-	go get ./... && go install ./...
+# install: $(GOFILES) assets/assets.go
+# 	go get ./... && go install ./...
 
-assets/assets.go: $(GOBINDATA) data
-	$(GOBINDATA) -ignore \\.gitignore -nocompress -pkg="assets" -o assets/assets.go data
+# assets/assets.go: $(GOBINDATA) data
+# 	$(GOBINDATA) -ignore \\.gitignore -nocompress -pkg="assets" -o assets/assets.go data
 
 $(GOBINDATA):
 	go get -u github.com/go-bindata/go-bindata/...
