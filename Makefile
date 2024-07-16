@@ -1,4 +1,4 @@
-CESIUM_VERSION:=1.63.1
+CESIUM_VERSION:=1.118
 checkout:=$(or $(FRIENDLY_CHECKOUT),$(shell git branch --show-current))
 FRIENDLY_CHECKOUT:=$(or $(FRIENDLY_CHECKOUT),$(shell echo $(checkout) | sed 's/\//-/g'))
 GOFILES:=$(shell find . -name '*.go')

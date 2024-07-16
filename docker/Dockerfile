@@ -9,9 +9,9 @@ ARG FRIENDLY_CHECKOUT
 ARG CESIUM_VERSION
 
 # Set correct environment variables.
-ENV HOME /root
-ENV FRIENDLY_CHECKOUT $FRIENDLY_CHECKOUT
-ENV CESIUM_VERSION $CESIUM_VERSION
+ENV HOME=/root
+ENV FRIENDLY_CHECKOUT=$FRIENDLY_CHECKOUT
+ENV CESIUM_VERSION=$CESIUM_VERSION
 
 # Regenerate SSH host keys. baseimage-docker does not contain any, so you
 # have to do that yourself. You may also comment out this instruction; the
