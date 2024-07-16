@@ -66,7 +66,7 @@ ADD ./root-fs /tmp/root-fs
 RUN rsync -a /tmp/root-fs/ /
 
 # Expose the terrain server
-EXPOSE 8000
+EXPOSE 8080
 
 # Clean up APT when done
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
